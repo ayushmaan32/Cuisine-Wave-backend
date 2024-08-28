@@ -2,13 +2,19 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
+import MyUserRoute from "./routes/MyUserRoute";
 
 const app = express();
 const port = 5000;
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
-  console.log("Connected to databases");
-});
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING as string)
+  .then(() => {
+    console.log("Connected to databases");
+  })
+  .catch((err: any) => {
+    console.error(err);
+  });
 
 // middleware to handle to json
 app.use(express.json());
@@ -19,6 +25,8 @@ app.get("/", (req: Request, res: Response) => {
     message: "hello",
   });
 });
+
+app.use("/api/my/user", MyUserRoute);
 
 const server = app.listen(port, () => {
   //   if (err) {
