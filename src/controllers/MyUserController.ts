@@ -7,7 +7,7 @@ const createcurrentuser = async (req: Request, res: Response) => {
     // check if user exists
     const existinguser = await User.findOne({ auth0Id });
     if (existinguser) {
-      return res.status(200).send;
+      return res.status(200).send();
     }
     // if not create a new
 
