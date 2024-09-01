@@ -16,12 +16,12 @@ const handleValidationErrors = async (
 };
 
 export const validateMyUserRequest = [
-  body("name").isEmpty().isString().withMessage("Name must be string"),
+  body("name").isString().isEmpty().withMessage("Name must be string"),
   body("addressLine1")
-    .isEmpty()
     .isString()
+    .isEmpty()
     .withMessage("addressLine1 must be string"),
-  body("city").isEmpty().isString().withMessage("City must be string"),
-  body("country").isEmpty().isString().withMessage("Name must be string"),
+  body("city").isString().isEmpty().withMessage("City must be string"),
+  body("country").isString().isEmpty().withMessage("Name must be string"),
   handleValidationErrors,
 ];
