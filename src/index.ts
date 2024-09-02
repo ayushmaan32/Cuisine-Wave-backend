@@ -20,10 +20,8 @@ mongoose
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({
-    message: "hello",
-  });
+app.get("/health", (req: Request, res: Response) => {
+  res.send({ message: "Health is Ok" });
 });
 
 app.use("/api/my/user", MyUserRoute);
